@@ -4,24 +4,25 @@ import openpyxl
 
 sis1 = pd.read_excel('data/Folha Pag_sis1.xlsx', engine="openpyxl")
 
-
+#print(sis1)
 
 
 filial = sis1.columns[1]  # Pega a primeira filial a partir do nome da coluna
 filiais = []  # Lista para armazenar as filiais
+valores = []
 
 for _, row in sis1.iterrows():
     if isinstance(row.iloc[1], str) and "Filial" in row.iloc[1]:  
         filial = row.iloc[1]  # Atualiza quando encontra um novo nome de filial
-    filiais.append(filial)  # Adiciona a filial para cada linha do DataFrame
+    #filiais.append(filial)  # Adiciona a filial para cada linha do DataFrame
 
-# Confirme que a lista tem o mesmo tamanho do DataFrame
-print(f"Tamanho do DataFrame: {len(sis1)}")
-print(f"Tamanho da lista Filiais: {len(filiais)}")
-
-# Agora adicionamos a coluna corretamente
-sis1["Filial"] = filiais
-print(sis1[["Filial"]].head(20))
+    if isinstance(row.iloc[3], float) and not pd.isna(row.iloc[3]):
+        filiais.append(filial)
+        valores.append(row.iloc[3])
+        
+        
+df_valores = pd.DataFrame({"Filial":filiais,"Valor":valores})
+print(df_valores)
 
 
 
