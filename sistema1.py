@@ -9,6 +9,7 @@ filiais = []
 descricoes = []
 valores = []
 
+
 for _, row in sis1.iterrows():
     if isinstance(row.iloc[1], str) and "Filial" in row.iloc[1]:  
         filial = row.iloc[1]  
@@ -23,6 +24,7 @@ for _, row in sis1.iterrows():
         
         
 sis1_df = pd.DataFrame({"Filial":filiais,"Descrição":descricoes,"Valor":valores})
+sis1_df.rename(columns={'Valor':'Total Sis 1'}, inplace=True)
 
 print(sis1_df)
 
