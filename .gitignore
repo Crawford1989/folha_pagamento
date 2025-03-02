@@ -1,2 +1,9 @@
-venv_folha/
-~$*.xlsx
+
+*.xlsx
+*.xls
+
+
+/output/
+
+
+/venv_folha/

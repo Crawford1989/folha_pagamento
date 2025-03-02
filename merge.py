@@ -15,4 +15,5 @@ merge_df['Diferença'] = round(merge_df['Total Sis 1'] - merge_df['Total Sis 2']
 merge_df.rename(columns={'Filial_Codigo':'ID'}, inplace=True)
 merge_df = merge_df[['ID','Filial','Descrição','Total Sis 1','Total Sis 2','Diferença','Data']]
 
-print(merge_df)
+if __name__ == "__main__":
+    print(merge_df)
